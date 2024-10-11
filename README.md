@@ -65,7 +65,7 @@ Before running the application, make sure you have the following installed:
 1. **Clone the repository**:
 
     ```bash
-    git clone https://github.com/your_username/your_project.git
+    git clone https://github.com/MohitWani/RAG-for-BUSINESS-DOCS
     cd your_project
     ```
 
