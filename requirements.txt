@@ -4,3 +4,4 @@ langchain-groq
 pypdf
 gpt4all
 chromadb
+streamlit

@@ -15,8 +15,7 @@ import os
 
 load_dotenv()
 
-groq_token = os.environ['HuggingFace_token']
-
+groq_token = os.environ['GROQ_API_KEY']
 
 
 # Output parser will split the LLM result into a list of queries
@@ -84,3 +83,26 @@ def generation_step(llm,reranked_results,query):
         | StrOutputParser()
     )
     return final_rag_chain.invoke({'context':reranked_results, "question": query})
+
+
+def model():
+    llm=ChatGroq(groq_api_key=groq_token,
+         model_name="mixtral-8x7b-32768")
+    
+    return llm
+
+# ALTERNATIVE MODEL
+# def model():
+#     model_kwargs={
+#             "max_new_tokens": 512,
+#             "top_k": 2,
+#             "temperature": 0.1,
+#             "repetition_penalty": 1.03,
+#         }
+#     llm = HuggingFaceEndpoint(
+#         repo_id="HuggingFaceH4/zephyr-7b-beta",
+#         task="text-generation",
+#         input_type=model_kwargs,
+#         huggingfacehub_api_token= huggingface_token,
+#     )
+#     return llm
